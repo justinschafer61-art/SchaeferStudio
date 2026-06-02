@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Demo-Webseite für ein modernes Premium-Café und Restaurant mit Reservierung, Galerie, Speisekarte und hochwertigen lokalen Bildern.">
+  <meta name="robots" content="noindex, follow">
+  <meta property="og:title" content="Maison Noire | Premium Café &amp; Restaurant Demo">
+  <meta property="og:description" content="Eine hochwertige Referenz-Webseite für ein Premium-Café oder Restaurant.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/restaurant-interior.jpg">
+  <title>Maison Noire | Premium Café &amp; Restaurant Demo</title>
+  <link rel="icon" href="images/coffee.jpg" type="image/jpeg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+  <header class="site-header" data-header>
+    <a class="brand" href="#start" aria-label="Maison Noire Startseite">
+      <span class="brand-mark">MN</span>
+      <span>
+        <strong>Maison Noire</strong>
+        <small>Café &amp; Restaurant</small>
+      </span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-label="Menü öffnen" aria-expanded="false" data-nav-toggle>
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="main-nav" aria-label="Hauptnavigation" data-nav>
+      <a href="#start">Startseite</a>
+      <a href="#speisekarte">Speisekarte</a>
+      <a href="#ueber-uns">Über uns</a>
+      <a href="#galerie">Galerie</a>
+      <a href="#reservierung">Reservierung</a>
+      <a href="#kontakt">Kontakt</a>
+      <a class="home-link" href="../../index.html">Zurück zur Hauptseite</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="start" aria-label="Hero Slider">
+      <div class="hero-slide is-active" style="--bg: url('images/restaurant-interior.jpg')">
+        <div class="hero-content">
+          <p class="eyebrow">Fine Dining trifft Café-Kultur</p>
+          <h1>Ein Ort für langsame Morgen und elegante Abende.</h1>
+          <p>Maison Noire verbindet handwerkliche Küche, Spezialitätenkaffee und warme Gastlichkeit in einem atmosphärischen Premium-Ambiente.</p>
+          <a class="button button-primary" href="#reservierung">Tisch reservieren</a>
+        </div>
+      </div>
+      <div class="hero-slide" style="--bg: url('images/cafe-ambience.jpg')">
+        <div class="hero-content">
+          <p class="eyebrow">Café-Ambiente</p>
+          <h2>Goldenes Licht, leise Musik, perfekte Espressi.</h2>
+          <p>Vom ersten Cappuccino bis zum letzten Dessert: Jedes Detail ist für Genuss, Ruhe und Gespräch gestaltet.</p>
+          <a class="button button-primary" href="#speisekarte">Spezialitäten ansehen</a>
+        </div>
+      </div>
+      <div class="hero-slide" style="--bg: url('images/premium-dish.jpg')">
+        <div class="hero-content">
+          <p class="eyebrow">Signature Cuisine</p>
+          <h2>Saisonale Gerichte mit präziser Handschrift.</h2>
+          <p>Regionale Zutaten, feine Texturen und moderne Tellerbilder für besondere Mittagessen und Dinner.</p>
+          <a class="button button-primary" href="#gerichte">Beliebte Gerichte</a>
+        </div>
+      </div>
+      <div class="hero-slide" style="--bg: url('images/terrace.jpg')">
+        <div class="hero-content">
+          <p class="eyebrow">Terrasse &amp; Abendservice</p>
+          <h2>Reservieren Sie Ihren Platz unter warmem Licht.</h2>
+          <p>Eine intime Terrasse für Aperitif, Dinner und lange Sommerabende mitten in der Stadt.</p>
+          <a class="button button-primary" href="#kontakt">Kontakt aufnehmen</a>
+        </div>
+      </div>
+      <div class="slider-controls" aria-label="Slider Steuerung">
+        <button class="is-active" type="button" data-slide-button="0" aria-label="Slide 1"></button>
+        <button type="button" data-slide-button="1" aria-label="Slide 2"></button>
+        <button type="button" data-slide-button="2" aria-label="Slide 3"></button>
+        <button type="button" data-slide-button="3" aria-label="Slide 4"></button>
+      </div>
+    </section>
+
+    <section class="section about-section" id="ueber-uns">
+      <div class="section-media reveal">
+        <img src="images/cafe-ambience.jpg" alt="Elegantes Café-Ambiente mit warmem Licht" width="1200" height="1500" loading="lazy">
+      </div>
+      <div class="section-copy reveal">
+        <p class="eyebrow dark">Über uns</p>
+        <h2>Ein Restaurant für Menschen, die Atmosphäre schmecken können.</h2>
+        <p>Maison Noire ist als fiktives Premium-Restaurant konzipiert: ein Ort mit dunklen Materialien, weichen Lichtinseln und einer Küche, die klassische Handwerkskunst modern interpretiert.</p>
+        <p>Das Konzept richtet sich an Gäste, die tagsüber ein hochwertiges Café suchen und abends ein ruhiges Restaurant mit Charakter. Jedes Detail, von der Karte bis zur Reservierung, ist klar, hochwertig und digital leicht zugänglich.</p>
+        <div class="stats">
+          <span><strong>42</strong> Plätze</span>
+          <span><strong>5</strong> Signature-Menüs</span>
+          <span><strong>2026</strong> Demo-Konzept</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="speisekarte">
+      <div class="section-heading reveal">
+        <p class="eyebrow dark">Unsere Spezialitäten</p>
+        <h2>Vom ersten Espresso bis zum letzten Glas.</h2>
+      </div>
+      <div class="specialty-grid">
+        <article class="specialty-card reveal">
+          <span>☀</span>
+          <h3>Frühstück</h3>
+          <p>Brioche, pochierte Eier, hausgemachte Konfitüren und saisonale Bowls.</p>
+        </article>
+        <article class="specialty-card reveal">
+          <span>☕</span>
+          <h3>Kaffee</h3>
+          <p>Single-Origin Espresso, Filterkaffee und cremige Cappuccino-Variationen.</p>
+        </article>
+        <article class="specialty-card reveal">
+          <span>✦</span>
+          <h3>Hauptgerichte</h3>
+          <p>Feine Bistro-Küche mit saisonalem Gemüse, Fisch und aromatischen Saucen.</p>
+        </article>
+        <article class="specialty-card reveal">
+          <span>◇</span>
+          <h3>Desserts</h3>
+          <p>Elegante Patisserie, dunkle Schokolade, Früchte und handgemachte Cremes.</p>
+        </article>
+        <article class="specialty-card reveal">
+          <span>◐</span>
+          <h3>Cocktails</h3>
+          <p>Klassische Aperitifs, alkoholfreie Signatures und fein balancierte Drinks.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section menu-section" id="gerichte">
+      <div class="section-heading reveal">
+        <p class="eyebrow dark">Beliebte Gerichte</p>
+        <h2>Ausgewählte Teller mit starkem ersten Eindruck.</h2>
+      </div>
+      <div class="dish-grid">
+        <article class="dish-card reveal">
+          <img src="images/premium-dish.jpg" alt="Fein angerichtetes Hauptgericht" width="900" height="1100" loading="lazy">
+          <div>
+            <h3>Truffle Garden Plate</h3>
+            <p>Geröstetes Wurzelgemüse, Kräuterjus, Haselnuss und Trüffelcreme.</p>
+            <strong>24 EUR</strong>
+          </div>
+        </article>
+        <article class="dish-card reveal">
+          <img src="images/fine-dining.jpg" alt="Mehrere fein angerichtete Teller" width="900" height="1100" loading="lazy">
+          <div>
+            <h3>Maison Tasting</h3>
+            <p>Drei kleine Gänge aus der Tageskarte mit passenden Saucen und Texturen.</p>
+            <strong>38 EUR</strong>
+          </div>
+        </article>
+        <article class="dish-card reveal">
+          <img src="images/coffee.jpg" alt="Cappuccino mit Latte Art" width="900" height="1100" loading="lazy">
+          <div>
+            <h3>Velvet Cappuccino</h3>
+            <p>Doppelter Espresso, samtiger Milchschaum und karamellige Röstnoten.</p>
+            <strong>5 EUR</strong>
+          </div>
+        </article>
+        <article class="dish-card reveal">
+          <img src="images/dessert.jpg" alt="Dessert auf dunklem Teller" width="900" height="1100" loading="lazy">
+          <div>
+            <h3>Noire Dessert</h3>
+            <p>Dunkle Schokolade, Vanillecreme, Beerenreduktion und Mandelcrunch.</p>
+            <strong>12 EUR</strong>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section gallery-section" id="galerie">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Galerie</p>
+        <h2>Ein visueller Eindruck von Raum, Küche und Terrasse.</h2>
+      </div>
+      <div class="gallery-grid">
+        <button class="gallery-item tall reveal" type="button" data-lightbox="images/restaurant-interior.jpg">
+          <img src="images/restaurant-interior.jpg" alt="Dunkler Restaurant Innenbereich" width="900" height="1200" loading="lazy">
+        </button>
+        <button class="gallery-item reveal" type="button" data-lightbox="images/coffee.jpg">
+          <img src="images/coffee.jpg" alt="Kaffee mit Latte Art" width="900" height="700" loading="lazy">
+        </button>
+        <button class="gallery-item reveal" type="button" data-lightbox="images/premium-dish.jpg">
+          <img src="images/premium-dish.jpg" alt="Premium Speise" width="900" height="700" loading="lazy">
+        </button>
+        <button class="gallery-item wide reveal" type="button" data-lightbox="images/terrace.jpg">
+          <img src="images/terrace.jpg" alt="Restaurant Terrasse bei Nacht" width="1400" height="850" loading="lazy">
+        </button>
+        <button class="gallery-item reveal" type="button" data-lightbox="images/dessert.jpg">
+          <img src="images/dessert.jpg" alt="Dessert im Café" width="900" height="700" loading="lazy">
+        </button>
+        <button class="gallery-item reveal" type="button" data-lightbox="images/cafe-ambience.jpg">
+          <img src="images/cafe-ambience.jpg" alt="Café-Ambiente" width="900" height="700" loading="lazy">
+        </button>
+      </div>
+    </section>
+
+    <section class="section testimonials-section">
+      <div class="section-heading reveal">
+        <p class="eyebrow dark">Kundenbewertungen</p>
+        <h2>Stimmen aus einem Abend voller Genuss.</h2>
+      </div>
+      <div class="testimonial-shell reveal">
+        <article class="testimonial is-active" data-testimonial>
+          <p>"Selten fühlt sich ein Restaurant digital und vor Ort so stimmig an. Die Reservierung war leicht, der Abend großartig."</p>
+          <strong>Laura M.</strong>
+        </article>
+        <article class="testimonial" data-testimonial>
+          <p>"Ein ruhiger, hochwertiger Auftritt. Die Seite macht sofort Lust auf Kaffee, Dinner und ein langes Gespräch."</p>
+          <strong>Daniel K.</strong>
+        </article>
+        <article class="testimonial" data-testimonial>
+          <p>"Die Bilder, die Karte und der Ton wirken wie aus einem echten Premium-Konzept. Genau so muss Gastronomie online wirken."</p>
+          <strong>Sofia R.</strong>
+        </article>
+      </div>
+    </section>
+
+    <section class="reservation-band" id="reservierung">
+      <div class="reservation-content reveal">
+        <p class="eyebrow">Reservierung</p>
+        <h2>Reservieren Sie noch heute Ihren Tisch.</h2>
+        <p>Für Dinner, Brunch oder besondere Anlässe: Wir halten Ihren Lieblingsplatz bereit.</p>
+        <button class="button button-primary demo-button" type="button">Tisch reservieren</button>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="kontakt">
+      <div class="section-heading reveal">
+        <p class="eyebrow dark">Kontakt</p>
+        <h2>Maison Noire im Herzen der Stadt.</h2>
+      </div>
+      <div class="contact-grid">
+        <article class="contact-card reveal">
+          <h3>Adresse</h3>
+          <p>Goldgasse 18<br>40213 Düsseldorf</p>
+        </article>
+        <article class="contact-card reveal">
+          <h3>Telefon</h3>
+          <p>+49 211 1234567</p>
+        </article>
+        <article class="contact-card reveal">
+          <h3>E-Mail</h3>
+          <p>hallo@maison-noire.example</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <a class="footer-brand" href="#start">Maison Noire</a>
+      <p>Premium-Café &amp; Restaurant-Demo für moderne Gastronomie-Websites.</p>
+    </div>
+    <nav aria-label="Footer Navigation">
+      <a href="#speisekarte">Speisekarte</a>
+      <a href="#galerie">Galerie</a>
+      <a href="#reservierung">Reservierung</a>
+      <a href="../../index.html">Zurück zur Hauptseite</a>
+      <a href="../../impressum.html">Impressum</a>
+      <a href="../../datenschutz.html">Datenschutz</a>
+    </nav>
+    <div class="footer-hours">
+      <strong>Öffnungszeiten</strong>
+      <span>Mo-Fr 09:00-23:00</span>
+      <span>Sa-So 10:00-00:00</span>
+      <div class="socials" aria-label="Social Media">
+        <span aria-label="Instagram">Ig</span>
+        <span aria-label="Facebook">Fb</span>
+        <span aria-label="Pinterest">Pi</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="lightbox" data-lightbox-modal aria-hidden="true">
+    <button type="button" aria-label="Lightbox schließen" data-lightbox-close>×</button>
+    <img src="" alt="">
+  </div>
+
+  <a class="floating-home-button" href="../../index.html">Zurück zur Hauptseite</a>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
