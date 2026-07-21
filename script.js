@@ -2,6 +2,7 @@ const navToggle = document.querySelector("[data-nav-toggle]");
 const nav = document.querySelector("[data-nav]");
 const contactForm = document.querySelector("[data-contact-form]");
 const formMessage = document.querySelector("[data-form-message]");
+const submitButton = document.querySelector("[data-submit-button]");
 const revealElements = document.querySelectorAll(".reveal");
 
 // Schliesst die mobile Navigation nach Link-Klicks oder Escape.
@@ -54,32 +55,42 @@ if ("IntersectionObserver" in window) {
   revealElements.forEach((element) => element.classList.add("is-visible"));
 }
 
-// Das Formular bleibt ohne Backend und oeffnet die Mail-App mit vorausgefuelltem Inhalt.
-contactForm?.addEventListener("submit", (event) => {
+// Sendet Anfragen direkt an Netlify Forms, ohne die Seite zu verlassen.
+contactForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   const formData = new FormData(contactForm);
-  const name = String(formData.get("name") || "").trim();
-  const email = String(formData.get("email") || "").trim();
-  const company = String(formData.get("company") || "").trim();
-  const message = String(formData.get("message") || "").trim();
-  const subject = `Projektanfrage von ${name || "Schäfer Studio Website"}`;
-  const body = [
-    "Hallo Schäfer Studio,",
-    "",
-    "ich interessiere mich für eine neue Webseite.",
-    "",
-    `Name: ${name}`,
-    `E-Mail: ${email}`,
-    `Unternehmen: ${company || "-"}`,
-    "",
-    "Nachricht:",
-    message,
-    "",
-    "Viele Grüße",
-    name
-  ].join("\n");
+  formMessage.classList.remove("is-success", "is-error");
+  formMessage.textContent = "Anfrage wird gesendet …";
 
-  window.location.href = `mailto:info@schaeferstudio.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  formMessage.textContent = "Deine E-Mail-App wurde geöffnet. Bitte sende die Nachricht dort ab.";
+  if (submitButton) {
+    submitButton.disabled = true;
+    submitButton.setAttribute("aria-busy", "true");
+    submitButton.textContent = "Wird gesendet …";
+  }
+
+  try {
+    const response = await fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData).toString()
+    });
+
+    if (!response.ok) {
+      throw new Error(`Formular konnte nicht gesendet werden (${response.status}).`);
+    }
+
+    contactForm.reset();
+    formMessage.classList.add("is-success");
+    formMessage.textContent = "Vielen Dank! Deine Anfrage wurde erfolgreich gesendet. Ich melde mich bei dir.";
+  } catch (error) {
+    formMessage.classList.add("is-error");
+    formMessage.innerHTML = 'Das hat leider nicht funktioniert. Schreib mir bitte direkt an <a href="mailto:info@schaeferstudio.de">info@schaeferstudio.de</a>.';
+  } finally {
+    if (submitButton) {
+      submitButton.disabled = false;
+      submitButton.removeAttribute("aria-busy");
+      submitButton.innerHTML = 'Anfrage senden <span aria-hidden="true">↗</span>';
+    }
+  }
 });
