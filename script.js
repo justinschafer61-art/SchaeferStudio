@@ -1,96 +1,15 @@
-const navToggle = document.querySelector("[data-nav-toggle]");
-const nav = document.querySelector("[data-nav]");
-const contactForm = document.querySelector("[data-contact-form]");
-const formMessage = document.querySelector("[data-form-message]");
-const submitButton = document.querySelector("[data-submit-button]");
-const revealElements = document.querySelectorAll(".reveal");
-
-// Schliesst die mobile Navigation nach Link-Klicks oder Escape.
-function closeNavigation() {
-  document.body.classList.remove("nav-open");
-  nav?.classList.remove("is-open");
-  navToggle?.classList.remove("is-active");
-  navToggle?.setAttribute("aria-expanded", "false");
-  navToggle?.setAttribute("aria-label", "Menü öffnen");
-}
-
-navToggle?.addEventListener("click", () => {
-  const isOpen = nav?.classList.toggle("is-open");
-  document.body.classList.toggle("nav-open", Boolean(isOpen));
-  navToggle.classList.toggle("is-active", Boolean(isOpen));
-  navToggle.setAttribute("aria-expanded", String(Boolean(isOpen)));
-  navToggle.setAttribute("aria-label", isOpen ? "Menü schließen" : "Menü öffnen");
-});
-
-// Interne Navigationslinks sollen das mobile Menue direkt wieder schliessen.
-nav?.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", closeNavigation);
-});
-
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    closeNavigation();
-  }
-});
-
-// Dezente Scroll-Effekte ohne externe Bibliothek.
-if ("IntersectionObserver" in window) {
-  const revealObserver = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    {
-      threshold: 0.16,
-      rootMargin: "0px 0px -40px 0px"
-    }
-  );
-
-  revealElements.forEach((element) => revealObserver.observe(element));
-} else {
-  revealElements.forEach((element) => element.classList.add("is-visible"));
-}
-
-// Sendet Anfragen direkt an Netlify Forms, ohne die Seite zu verlassen.
-contactForm?.addEventListener("submit", async (event) => {
-  event.preventDefault();
-
-  const formData = new FormData(contactForm);
-  formMessage.classList.remove("is-success", "is-error");
-  formMessage.textContent = "Anfrage wird gesendet …";
-
-  if (submitButton) {
-    submitButton.disabled = true;
-    submitButton.setAttribute("aria-busy", "true");
-    submitButton.textContent = "Wird gesendet …";
-  }
-
-  try {
-    const response = await fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(formData).toString()
-    });
-
-    if (!response.ok) {
-      throw new Error(`Formular konnte nicht gesendet werden (${response.status}).`);
-    }
-
-    contactForm.reset();
-    formMessage.classList.add("is-success");
-    formMessage.textContent = "Vielen Dank! Deine Anfrage wurde erfolgreich gesendet. Ich melde mich bei dir.";
-  } catch (error) {
-    formMessage.classList.add("is-error");
-    formMessage.innerHTML = 'Das hat leider nicht funktioniert. Schreib mir bitte direkt an <a href="mailto:info@schaeferstudio.de">info@schaeferstudio.de</a>.';
-  } finally {
-    if (submitButton) {
-      submitButton.disabled = false;
-      submitButton.removeAttribute("aria-busy");
-      submitButton.innerHTML = 'Anfrage senden <span aria-hidden="true">↗</span>';
-    }
-  }
-});
+const menuDialog=document.getElementById('menu-dialog'),menuToggle=document.querySelector('.menu-toggle');
+function closeMenu(){menuDialog.close();document.body.style.overflow='';menuToggle.focus()}
+menuToggle.addEventListener('click',()=>{menuDialog.showModal();document.body.style.overflow='hidden'});
+document.querySelector('.close-menu').addEventListener('click',closeMenu);
+menuDialog.addEventListener('close',()=>document.body.style.overflow='');
+menuDialog.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',closeMenu));
+const dropdown=document.querySelector('.nav-dropdown');document.addEventListener('click',e=>{if(!dropdown.contains(e.target))dropdown.open=false});document.addEventListener('keydown',e=>{if(e.key==='Escape')dropdown.open=false});dropdown.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>dropdown.open=false));
+document.getElementById('year').textContent=new Date().getFullYear();
+const plannerForm=document.getElementById('planner-form');let currentPlan;
+function makePlan(starting,scope,goal){const compact=scope==='kompakt';const recruiting=goal==='bewerbungen';const result={title:compact?'Ein klarer\nOnepager.':'Eine Website\nmit Unterseiten.',type:compact?'KOMPAKT & AUF DEN PUNKT':'MEHR RAUM FÜR DEINE LEISTUNGEN',description:compact?'Dein Betrieb, deine Leistungen und die wichtigsten Gründe für eine Zusammenarbeit auf einer übersichtlichen Seite.':'Ein eigener Bereich für jede wichtige Leistung. So finden Besucher schnell die Informationen, die für sie relevant sind.',features:[compact?'Leistungen verständlich vorstellen':'Eigene Seiten für deine wichtigsten Leistungen',goal==='vertrauen'?'Deinen Betrieb mit eigenen Bildern und Inhalten zeigen':recruiting?'Deinen Betrieb als Arbeitgeber vorstellen':'Vertrauen durch eigene Bilder und Inhalte',recruiting?'Ein einfacher Weg zur Bewerbung':'Direkte Kontaktmöglichkeiten']};if(starting==='redesign'){result.type='NEUER AUFTRITT, PASSENDE STRUKTUR';result.description+=' Vorhandene Inhalte werden geprüft und sinnvoll übernommen.'}if(recruiting)result.description+=' Der Schwerpunkt liegt auf deinem Betrieb als Arbeitgeber und offenen Stellen.';if(goal==='vertrauen')result.description+=' Dein Unternehmen und seine Stärken stehen im Mittelpunkt.';return result}
+function updatePlan(){const d=new FormData(plannerForm);currentPlan=makePlan(d.get('starting'),d.get('scope'),d.get('goal'));document.getElementById('plan-title').innerText=currentPlan.title;document.getElementById('plan-type').textContent=currentPlan.type;document.getElementById('plan-description').textContent=currentPlan.description;document.getElementById('plan-features').replaceChildren(...currentPlan.features.map(text=>{const li=document.createElement('li');li.textContent=text;return li}))}
+plannerForm.addEventListener('change',updatePlan);document.querySelector('.planner-reset').addEventListener('click',()=>{plannerForm.reset();updatePlan()});updatePlan();
+document.getElementById('use-plan').addEventListener('click',()=>{const d=new FormData(plannerForm);const start=d.get('starting')==='neu'?'Meine erste Website':'Meine bestehende Website erneuern';const goals={anfragen:'Mehr passende Anfragen',vertrauen:'Professioneller auftreten',bewerbungen:'Mitarbeiter finden'};const text=`Hallo Justin,\n\nich möchte ${start.toLowerCase()}. Mein wichtigstes Ziel: ${goals[d.get('goal')]}.\n\nDie erste Empfehlung aus dem Website-Planer: ${currentPlan.title.replace('\n',' ')}\n${currentPlan.features.map(t=>'– '+t).join('\n')}\n\nÜber meinen Betrieb:\n`;document.getElementById('message').value=text;document.getElementById('kontakt').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});setTimeout(()=>document.getElementById('name').focus({preventScroll:true}),500)});
+document.getElementById('inquiry').addEventListener('submit',async e=>{e.preventDefault();const form=e.currentTarget,status=document.getElementById('form-status'),button=form.querySelector('button[type="submit"]');if(form.dataset.submitting==='true')return;if(location.hostname.endsWith('.chatgpt.site')||location.protocol==='file:'){status.textContent='In dieser Vorschau ist der Versand deaktiviert. Du erreichst mich unter info@schaeferstudio.de.';return}const data=new FormData(form);if(data.get('bot-field'))return;const initialLabel=button.textContent;form.dataset.submitting='true';button.disabled=true;button.textContent='Wird gesendet …';status.textContent='';const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),20000);try{const response=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(data).toString(),signal:controller.signal});if(!response.ok)throw new Error('submission_failed');status.textContent='Vielen Dank! Deine Anfrage wurde gesendet. Ich melde mich bei dir.';form.reset()}catch(error){status.textContent=error.name==='AbortError'?'Die Übertragung konnte nicht bestätigt werden. Deine Angaben bleiben erhalten. Bitte versuche es später erneut oder schreibe an info@schaeferstudio.de.':'Deine Anfrage konnte nicht gesendet werden. Deine Angaben bleiben erhalten. Bitte versuche es erneut oder schreibe an info@schaeferstudio.de.'}finally{clearTimeout(timer);form.dataset.submitting='false';button.disabled=false;button.textContent=initialLabel}});
+if('IntersectionObserver'in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches&&matchMedia('(min-width: 801px)').matches){document.documentElement.classList.add('motion');const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.remove('pending');observer.unobserve(entry.target)}}),{threshold:0,rootMargin:'180px 0px'});document.querySelectorAll('.reveal').forEach(el=>{el.classList.add('pending');observer.observe(el)});setTimeout(()=>document.querySelectorAll('.reveal.pending').forEach(el=>el.classList.remove('pending')),6000)}

@@ -1,0 +1,23 @@
+Schäfer Studio – Netlify-Upload
+Stand: 08.10.2026
+
+1. ZIP entpacken.
+2. Den Ordner mit index.html, style.css, script.js und assets in die manuellen Deploys deiner BESTEHENDEN Netlify-Website ziehen. Kein neues Projekt erforderlich.
+3. Unter Forms muss die Formularerkennung eingeschaltet sein. Nach dem Upload sollte das Formular „projektanfrage“ erkannt werden.
+4. Eine eigene Testanfrage auf schaeferstudio.de senden. In Netlify > Forms prüfen, ob sie angekommen ist. Die E-Mail-Benachrichtigung zusätzlich separat prüfen; diese Einstellung wird durch den ZIP-Upload nicht eingerichtet.
+5. Impressum und Datenschutz öffnen und die übernommenen persönlichen Angaben kontrollieren.
+6. In Google Search Console die Startseite prüfen und https://schaeferstudio.de/sitemap.xml einreichen.
+
+Enthalten:
+- Website mit Menü und Website-Planer
+- Netlify Forms (gleicher Formularname und gleiche Felder wie bisher)
+- Honeypot sowie Erfolgs- und Fehlermeldungen
+- Impressum und Datenschutz auf Basis der bisherigen Website; Geschäftsnummer ergänzt, lokal geladene Schriften korrekt beschrieben
+- Canonical, strukturierte Unternehmensdaten, robots.txt und sitemap.xml
+- Bisheriges Social-Preview-Bild übernommen
+- Eigene Danke- und Fehlerseite
+
+Prüfung:
+Lokale Dateien und Links, HTML-Struktur, JavaScript-Syntax, NRW-Texte, Sitemap sowie Formular-Datenkodierung und Erfolgs-/Fehlerbehandlung wurden geprüft. Die Netlify-Kontoeinstellungen und der tatsächliche Nachrichteneingang können erst nach dem Upload geprüft werden. Die vorhandenen Rechtstexte wurden übernommen und technisch abgeglichen; kontobezogene Vertrags- und Datenschutzeinstellungen wurden nicht geprüft.
+
+Die private ChatGPT-Vorschau versendet keine Formulare. Der Versand wird nach Veröffentlichung auf Netlify verarbeitet.
